@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import GoalList from "../components/GoalList";
-import GoalDetail from "../components/GoalDetail";
 
 function Home(){
     const [goals, setGoals] = useState([]);
@@ -16,7 +15,8 @@ function Home(){
 return (
     <>
     <GoalList goals={goals} onSelect={setSelectedGoal} />
-    <GoalDetail goal={selectedGoal} />
+   
+    <h2>Welcome!</h2>
     </>
 )
 }

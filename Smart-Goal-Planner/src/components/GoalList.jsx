@@ -1,19 +1,25 @@
-import {Link} from "react-router-dom" //navigation without refreshing page
+import React, { useEffect, useState } from 'react';
 
-function GoalList(){
-    return(
-        <>
-        <h2>Goals</h2>
-        {goals.map(goal =>(<div key={goal.id}>{goal.text}
-         </div>))}
-        </>
-    )
-};
+function GoalList() {
+  const [goals, setGoals] = useState([]);
 
-function handleDelete(){
-    fetch(`http://localhost:3001/goals/${id}`, {method:"DELETE"})
-    .then()
+  useEffect(() => {
+    fetch('http://localhost:3000/goals') 
+      .then(res => res.json())
+      .then(data => setGoals(data)); //update state
+      
+  }, []);
+
+  return (
+    <div>
+      <h2>Your Goals</h2>
+      <ul>
+        {goals.map(goal => (
+          <li key={goal.id}>{goal.name}</li> //parent=Home child=Goalist
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-
-export default  GoalList;
+export default GoalList;
