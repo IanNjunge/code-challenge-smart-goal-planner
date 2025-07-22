@@ -1,12 +1,12 @@
 //function that returns jsx to show list of goals from db.json
 
 
-function GoalList() {
-    
+function GoalList({goalName}) {
+    console.log(goalName, "Goal Name" )
 
   return (
     <>
-    <h1>SMART GOAL PLANNER</h1>
+    <h1>Goal Name</h1>
     </>
   );
 }
