@@ -26,7 +26,7 @@ function App() {
 
   //return GoalList component for every goal in goals array
   const goalComponent = goals.map((goal)=>{
-    return <GoalList goalName={goal.name}/>
+    return <GoalList key={goal.id} />
   })
   
    return (

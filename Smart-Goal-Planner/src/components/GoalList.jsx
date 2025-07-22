@@ -2,11 +2,11 @@
 
 
 function GoalList({goalName}) {
-    console.log(goalName, "Goal Name" )
+   
 
   return (
     <>
-    <h1>Goal Name</h1>
+    <h2>{goalName}</h2>
     </>
   );
 }
