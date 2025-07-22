@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import GoalList from "../components/GoalList";
 
@@ -16,7 +17,7 @@ return (
     <>
     <GoalList goals={goals} onSelect={setSelectedGoal} />
    
-    <h2>Welcome!</h2>
+   
     </>
 )
 }
