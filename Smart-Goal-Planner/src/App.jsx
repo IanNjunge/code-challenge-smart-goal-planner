@@ -11,10 +11,13 @@ function App() {
   const [count, setCount] = useState(0)
  
   // fetch GoalList and return GoalList component for every goal
-   fetch("http://localhost:3000/goals")
-  .then( (res)=>res.json())
+   fetch("http://localhost:3001/goals")
+  .then( (res)=>res.json()) //jsonify response
   .then((data)=>{
     console.log(data)
+    //call an operation on data (return goals list)
+    //store data in state variable
+    setGoals(data)
   }) 
   
   
