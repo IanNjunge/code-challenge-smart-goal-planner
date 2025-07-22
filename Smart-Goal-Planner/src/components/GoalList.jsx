@@ -6,6 +6,7 @@ function GoalList({goalName}) {
 
   return (
     <>
+    
     <h2>{goalName}</h2>
     </>
   );

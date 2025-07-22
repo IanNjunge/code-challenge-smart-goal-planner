@@ -30,8 +30,10 @@ function App() {
   
    return (
     <>
-  <h1>App Component</h1>
+  <h1>SMART GOAL PLANNER</h1>
    {goalComponent}
+   
+
     </>
   );
 
