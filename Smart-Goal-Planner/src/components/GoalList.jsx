@@ -2,7 +2,7 @@
 
 
 function GoalList({goalName}) {
-   
+   console.log(goalName,)
 
   return (
     <>

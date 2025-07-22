@@ -4,7 +4,6 @@ import './index.css'
 
 
 
-
 function App() {
   const [goals, setGoals] = useState([]);
   const [selectedGoal, setSelectedGoal] = useState(null);
@@ -35,6 +34,8 @@ function App() {
    {goalComponent}
     </>
   );
+
 }
 
-export default App;
+export default App;  
+
