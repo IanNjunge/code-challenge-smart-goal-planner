@@ -22,6 +22,7 @@ function AddGoalForm({ setGoals }) {
     saved: 0,
     createdOn: new Date().toISOString(),
    }
+   delete newGoal.id
 
    //save new goal to server via App
    fetch("http://localhost:3001/goals", {
@@ -32,7 +33,7 @@ function AddGoalForm({ setGoals }) {
    .then((res)=>res.json())
    .then((data)=>{
     //add data (new goals)to list of goals
-    setGoals((prevGoals)=> [...prevGoals, data]),
+    setGoals((prevGoals)=> [...prevGoals, data]);
     //Clear form 
     setName("");
     setTargetAmount("");
@@ -68,7 +69,7 @@ function AddGoalForm({ setGoals }) {
     /> 
 
       <input //deadline
-     type="text"
+     type="date"
      value={deadline}
      placeholder="When is this goal due?"
      onChange={((e)=> setDeadline(e.target.value))} required
