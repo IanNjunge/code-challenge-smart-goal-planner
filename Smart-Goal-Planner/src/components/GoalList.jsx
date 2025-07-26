@@ -9,9 +9,7 @@ function GoalList({ goals }) {
         if (!goal) return null; // Skip if goal is undefined or null
 
         return (
-          <li key={goal.id}>
-            {goal.name}
-          </li>
+          <p key={goal.id}> {goal.name}</p>
         );
       })}
       </ul>

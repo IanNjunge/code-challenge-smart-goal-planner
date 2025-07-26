@@ -31,16 +31,15 @@ function AddGoalForm({ setGoals }) {
    })
    .then((res)=>res.json())
    .then((data)=>{
-
     //add data (new goals)to list of goals
     setGoals((prevGoals)=> [...prevGoals, data]),
     //Clear form 
-    setName("")
-    setTargetAmount("")
-    setCategory("")
-    setDeadline("")
+    setName("");
+    setTargetAmount("");
+    setCategory("");
+    setDeadline("");
     })
-    
+
      }
    //return a form that has input fields
     return(
