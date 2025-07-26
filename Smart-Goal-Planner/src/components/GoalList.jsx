@@ -6,10 +6,14 @@ function GoalList({ goals }) {
       <h2>Your Goals</h2>
       <ul>
       {goals.map((goal) => {
-        if (!goal) return null; // Skip if goal is undefined or null
+        
+        if (!goal) return null; // Skip if null
 
         return (
+          <>
           <p key={goal.id}> {goal.name}</p>
+          
+          </>
         );
       })}
       </ul>

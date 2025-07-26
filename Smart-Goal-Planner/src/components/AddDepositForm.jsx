@@ -1,17 +1,22 @@
 //form to allow users to make deposits for selected goals
+import {useState} from 'react'
+function AddDepositForm (){
+    const [goals, setGoals]=useState([])
+    const [selectedGoal, setSelectedGoals]=useState([])
+    const [depositAmount, setDepositAmount]=useState([])
 
+   // fetch("http://localhost3001/goals")
+    //.then((res)=>res.json())
+    //.then((data)=>setGoals(data))
 
-function AddDepositForm(){
-    
-fetch("http://localhost:3001/goals",{ method:"POST"})
-.then((res)=>res.json())
+    function handleSubmit (e){
+    e.preventDefault()
+    }
+    return(
+      <>
+      <form id ="deposit-form" />
+      </>
 
-
-return(
-<>
-
-
-</>
-)
+    )
 }
-export default AddDepositForm
+export default AddDepositForm;
