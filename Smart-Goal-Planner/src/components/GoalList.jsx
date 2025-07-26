@@ -1,13 +1,15 @@
 //function that returns jsx to show list of goals from db.json
+//function should recieve prop from AddGoalForm (to ensure list is up to  date)
 
 
-function GoalList({goalName}) {
-   console.log(goalName,)
+function GoalList({goals}) {
+   
 
   return (
     <>
     
-    <h2>{goalName}</h2>
+    <h2>Your Goals</h2>
+    {goals}
     </>
   );
 }

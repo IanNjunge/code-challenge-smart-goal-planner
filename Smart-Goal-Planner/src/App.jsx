@@ -1,43 +1,36 @@
-import { useState, useEffect } from 'react';
-import GoalList from './components/GoalList';
-import './index.css'
+import React from "react"
+import {useState, useEffect} from "react"
+import AddGoalForm from "./components/AddGoalForm"
+import GoalList from "./components/GoalList"
+import AddDepositForm from "./components/AddDepositForm"
 
 
+//App is main component so fetch will be done here
+function App(){
+const [goals, setGoals]=useState([]); //store goals from local server
+const [selectedGoalId, setSelectedGoal]=useState(null); //for deposit
 
-function App() {
-  const [goals, setGoals] = useState([]);
-  const [selectedGoal, setSelectedGoal] = useState(null);
- 
-  // fetch GoalList and return GoalList component for every goal
-  useEffect(()=>{ //prevent re-rendering function component and handle fetch (side effect)
-   fetch("http://localhost:3001/goals")
-  .then( (res)=>res.json()) //jsonify response
-  .then((data)=>{
-    console.log(data)
-    //call an operation on data (return goals list)
-    //store data in state variable
-    setGoals(data); //set fetched data to state
-   });
+//Fetch goals from db.json
+useEffect(()=>{
+fetch("http://localhost:3000/goals")
+.then((res)=>res.json())
+.then((data)=>setGoals(data))
+},[]);
 
-   }, []);  //[] is empty so tied function (App) will be called once
-  
-  console.log(goals)
-
-  //return GoalList component for every goal in goals array
-  const goalComponent = goals.map((goal)=>{
-    return <GoalList key={goal.id} />
-  })
-  
-   return (
-    <>
-  <h1>SMART GOAL PLANNER</h1>
-   {goalComponent}
-   
-
-    </>
-  );
+return(
+<div classname="app-return">
+<h1>Smart Goal Planner</h1>
+<GoalList goals={goals}/>
+<AddGoalForm  />
+<AddDepositForm 
+          goals={goals}
+          onSelectGoal={setSelectedGoalId}
+          onDeleteGoal={deleteGoal}
+/>
+</div>
+)
 
 }
 
-export default App;  
 
+export default App
