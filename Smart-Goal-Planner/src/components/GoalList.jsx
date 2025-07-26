@@ -1,16 +1,21 @@
 //function that returns jsx to show list of goals from db.json
-//function should recieve prop from AddGoalForm (to ensure list is up to  date)
 
-
-function GoalList({goals}) {
-   
-
+function GoalList({ goals }) {
   return (
-    <>
-    
-    <h2>Your Goals</h2>
-    {goals}
-    </>
+    <div>
+      <h2>Your Goals</h2>
+      <ul>
+      {goals.map((goal) => {
+        if (!goal) return null; // Skip if goal is undefined or null
+
+        return (
+          <li key={goal.id}>
+            {goal.name}
+          </li>
+        );
+      })}
+      </ul>
+    </div>
   );
 }
 

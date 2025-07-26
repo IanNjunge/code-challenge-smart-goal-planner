@@ -2,9 +2,7 @@
 //Goals added are saved to db.json (POST)
 import { useState } from "react";
 
-
-
-function AddGoalForm({ onGoalAdded }) {
+function AddGoalForm({ setGoals }) {
   const [name, setName] = useState("");
   const [targetAmount, setTargetAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -17,7 +15,7 @@ function AddGoalForm({ onGoalAdded }) {
    e.preventDefault()
 
    const newGoal ={
-    name : "{name}", 
+    name, 
     targetAmount: Number(targetAmount),
     category,
     deadline,
@@ -26,48 +24,60 @@ function AddGoalForm({ onGoalAdded }) {
    }
 
    //save new goal to server via App
-   onAddGoal(newGoal);
+   fetch("http://localhost:3001/goals", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(newGoal)
+   })
+   .then((res)=>res.json())
+   .then((data)=>{
 
+    //add data (new goals)to list of goals
+    setGoals((prevGoals)=> [...prevGoals, data]),
     //Clear form 
     setName("")
     setTargetAmount("")
     setCategory("")
     setDeadline("")
-
+    })
+    
+     }
    //return a form that has input fields
     return(
-   <form onSubmit={handleSubmit}>
-    <input //name
-    type="text"
-    value= "{name}"
-    placeholder="Goal Name"
-    onChange={((e)=> setName(e.target.value))} required
-    /> 
+       <form onSubmit={handleSubmit}>
+        <h2>Add New Goal</h2>
+
+       <input //name
+          type="text"
+          value= {name}
+          placeholder="Goal Name"
+          onChange={((e)=> setName(e.target.value))} required
+          /> 
     
-    <input //targetAmount
-    type="number"
-    value={Number}
-    placeholder="Enter target amount here"
-    onChange={((e)=> setTargetAmount(e.target.value))} required
+       <input //targetAmount
+        type="number"
+        value={targetAmount}
+        placeholder="Enter target amount here"
+        onChange={((e)=> setTargetAmount(e.target.value))} required
     /> 
 
-    <input //category
-    type="text"
-    value={category}
-    placeholder="Enter Goal Category e.g School"
-    onChange={((e)=> setCategory(e.target.value))} required
-    /> 
-    <input //deadline
-    type="text"
-    value={deadline}
-    placeholder="When is this goal due?"
-    onChange={((e)=> setdeadline(e.target.value))} required
+       <input //category
+       type="text"
+       value={category}
+      placeholder="Enter Goal Category e.g School"
+      onChange={((e)=> setCategory(e.target.value))} required
     /> 
 
+      <input //deadline
+     type="text"
+     value={deadline}
+     placeholder="When is this goal due?"
+     onChange={((e)=> setDeadline(e.target.value))} required
+    /> 
+
+  <button type="submit">Add Goal</button>
   </form>
   )
-
-  }
 
 }  
 

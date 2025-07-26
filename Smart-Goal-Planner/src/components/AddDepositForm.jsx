@@ -2,6 +2,16 @@
 
 
 function AddDepositForm(){
-return(<></>)
+    
+fetch("http://localhost:3001/goals",{ method:"POST"})
+.then((res)=>res.json())
+
+
+return(
+<>
+
+
+</>
+)
 }
 export default AddDepositForm

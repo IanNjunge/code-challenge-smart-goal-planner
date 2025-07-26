@@ -31,13 +31,7 @@ body {
   min-height: 100vh;
 }
 
-H1 {
-  font-size:260%;
-  line-height: 1.1;
-  padding-bottom: 5%;
-  margin-top:-69%;
-  color:rgb(184, 196, 196)
-}
+
 
 button {
   border-radius: 8px;

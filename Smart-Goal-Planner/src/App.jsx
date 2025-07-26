@@ -5,28 +5,25 @@ import GoalList from "./components/GoalList"
 import AddDepositForm from "./components/AddDepositForm"
 
 
-//App is main component so fetch will be done here
+
 function App(){
 const [goals, setGoals]=useState([]); //store goals from local server
-const [selectedGoalId, setSelectedGoal]=useState(null); //for deposit
+
 
 //Fetch goals from db.json
 useEffect(()=>{
-fetch("http://localhost:3000/goals")
+fetch("http://localhost:3001/goals")
 .then((res)=>res.json())
 .then((data)=>setGoals(data))
 },[]);
 
 return(
-<div classname="app-return">
-<h1>Smart Goal Planner</h1>
-<GoalList goals={goals}/>
-<AddGoalForm  />
-<AddDepositForm 
-          goals={goals}
-          onSelectGoal={setSelectedGoalId}
-          onDeleteGoal={deleteGoal}
-/>
+<div className="app-return-div">
+<h1>SMART GOAL PLANNER</h1>
+<GoalList goals={goals} />
+<AddGoalForm setGoals={setGoals} />
+<AddDepositForm goals={goals} setGoals={setGoals}/>
+
 </div>
 )
 
